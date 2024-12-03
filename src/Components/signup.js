@@ -1,9 +1,7 @@
 import Paper from '@mui/material/Paper';
 import GoogleIcon from '@mui/icons-material/Google';
-import { Typography,TextField,Button,Link } from '@mui/material';
+import { Typography,TextField,Button,Link, MenuItem } from '@mui/material';
 import { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
     const Signup=()=>{
     const[user,setUser]=useState({"userName":"","userEmail":"", "userPassword":"","confirmPassword":""});
     console.log(user);
@@ -23,7 +21,6 @@ import { useNavigate } from 'react-router-dom';
       if(event.target.name==='confirmPassword'){
         setUser({...user,confirmPassword:event.target.value})
       }
-    }
       // if(password.event.target.value===confirmPassword.target.value){
       //   console.log('password match');
       // }
@@ -31,36 +28,11 @@ import { useNavigate } from 'react-router-dom';
       //   console.log('password not matched');
         
       // }
-      const navigate=useNavigate();
-      const ToLogin=()=>{
-        navigate('/signin');
-        axios.post('http://localhost:3000/login')
-        .then((res)=>{
-          alert('Login Success');
-          console.log(res.data)})
-          .catch((err)=>
-            {console.log(err)})
-      }
   
-
+}
     return(
-        <div 
-        style={{width:'100%',
-        height:'100vh',
-        display:'flex',
-        flexDirection:'column',
-        justifyContent:'center',
-        alignItems:'center',
-        backgroundColor:'whitesmoke'}}>
-    <Paper sx={{height:'450px',
-            width:'350px',
-            display:'flex',
-            flexDirection:'column',
-            justifyContent:'center',
-            alignItems:'center',
-            gap:'15px',
-            padding:'20px'}}
-             elevation={3} >
+        <div style={{width:'100%',height:'100vh',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',backgroundColor:'whitesmoke'}}>
+    <Paper sx={{height:'450px',width:'350px',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',gap:'15px',padding:'20px'}} elevation={3} >
       <Typography variant='h4' sx={{fontFamily:'arial'}}>Sign up</Typography>
       <TextField id="outlined-basic" label="Username" variant="outlined" name="text"
           onChange={(event)=>handleChange(event)} 
@@ -77,8 +49,8 @@ import { useNavigate } from 'react-router-dom';
             onChange={(event)=>handleChange(event)} 
             fullWidth/>
       </div>
-      <Button variant="contained" sx={{width:'100%'}} onClick={ToLogin}>Sign up</Button>
-      <Typography >Already have an account?  <Link href='/login'>Sign in</Link></Typography>
+      <Button variant="contained" sx={{width:'100%'}}>Sign up</Button>
+      <Typography >Already have an account?  <Link href='/login'>Log in</Link></Typography>
       <Typography>or</Typography>
       
       <Button variant="contained" sx={{width:'100%',display:'flex',gap:'10px'}}><GoogleIcon/>Sign up with Google</Button>

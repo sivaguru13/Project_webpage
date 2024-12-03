@@ -7,12 +7,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Signin =()=> {
-    const [user, setUser] = useState({ name: "", email: "", password: "" });
+    const [user, setUser] = useState({ email: "", password: "" });
     console.log(user);
     const handlechange = (event) => {
-    if (event.target.name === "name") {
-        setUser({ ...user, name: event.target.value });
-    }
+   
     if (event.target.name === "email") {
         setUser({ ...user, email: event.target.value });
     }
