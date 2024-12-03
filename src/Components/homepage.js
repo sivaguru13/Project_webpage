@@ -4,7 +4,7 @@ function Homepage(){
     return(
         <div>
             <h1>Welcom to Dashboard</h1>
-            <div><Button variant="contained">Contained</Button>
+            <div><Button variant="contained"></Button>
             <Button variant="contained">Contained</Button> </div>
         </div>
     );
