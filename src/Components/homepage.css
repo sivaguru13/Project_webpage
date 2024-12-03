@@ -1,0 +1,10 @@
+.homepage{
+    height: 100%;
+    width: 100%;
+    background-color: bisque;
+}
+.leftside{
+    width: 20%;
+    height: 100%;
+    background-color: aqua;
+}
