@@ -7,9 +7,15 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Signin =()=> {
+<<<<<<< Updated upstream
     const [user, setUser] = useState({ name: "", email: "", password: "" });
     console.log(user);
     const handlechange = (event) => {
+=======
+  const [user, setUser] = useState({ name: "", email: "", password: "" });
+  console.log(user);
+  const handlechange = (event) => {
+>>>>>>> Stashed changes
     if (event.target.name === "name") {
         setUser({ ...user, name: event.target.value });
     }
