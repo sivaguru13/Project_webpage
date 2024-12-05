@@ -1,4 +1,4 @@
-.homepage{
+/* .homepage{
     height: 100%;
     width: 100%;
     background-color: bisque;
@@ -7,4 +7,103 @@
     width: 20%;
     height: 100%;
     background-color: aqua;
+} */
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+body{
+    height: 100%;
+}
+.whole{
+    display: flex;
+}
+.sidebar{
+    width: 20%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: radial-gradient(circle at 0.1% 99.8%, rgb(0, 164, 189) 0%, rgb(0, 189, 165) 90%);
+    align-items: center;
+    color: white;
+
+}
+#rightside{
+    width: 80%;
+    height: 100vh;
+    /* background-color: rgb(255, 255, 255); */
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    background: radial-gradient(circle at 0.1% 99.8%, rgb(0, 164, 189) 0%, rgb(0, 189, 165) 90%);
+    padding: 50px 10px 10px;
+    position: relative;
+}
+.nav-left{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    /* justify-content: space-between; */
+    height: 60%;
+}
+.sidebar a{
+    text-decoration: none;
+    text-align: center;
+    color: rgb(0, 0, 0); 
+    font-size: 25px;
+    /* border-top: 1px solid;
+    border-bottom:1px solid ; */
+    padding-left: 100px;
+    padding-right: 100px;
+
+}
+#msg{
+    font-size: 30px;
+    color: black;
+}
+.nav-left{
+    padding: 0px;
+    font-size: 15px;
+    /* background-color: rgb(4, 61, 15) ; */
+    border: none;
+    color: white;
+}
+
+#but1{
+    color: rgb(0, 0, 0);
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 5px;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    z-index: 100;
+}
+img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+/* #but1:hover{
+    color:rgb(255, 255, 255);
+} */
+.nav-left .butns{
+    text-align: center;
+    color: rgb(0, 0, 0); 
+    font-size: 25px;
+    /* background-image: radial-gradient(circle at 0.1% 99.8%, rgb(0, 164, 189) 0%, rgb(0, 189, 165) 90%);; */
+    /* border-top: 1px solid;
+    border-bottom:1px solid ; */
+    padding-left: 100px;
+    padding-right: 100px; 
+    border: none;
+    background: none;
+}
+.butns:hover{
+    background: radial-gradient(circle at 0.1% 99.8%, rgb(16, 140, 159) 0%, rgb(0, 189, 165) 90%);
+    color: rgb(255, 255, 255);
 }

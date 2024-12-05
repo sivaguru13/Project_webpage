@@ -3,38 +3,26 @@ import { Typography, TextField, Button } from '@mui/material';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
 import { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Signin =()=> {
-    const [user, setUser] = useState({ email: "", password: "" });
-    console.log(user);
-    const handlechange = (event) => {
-   
-    if (event.target.name === "email") {
-        setUser({ ...user, email: event.target.value });
-    }
-    if (event.target.name === "password") {
-        setUser({ ...user, password: event.target.value });
-    }
-    };
-  // login button action backend connection
-    const Navigate=useNavigate();
-    const handlelogin=()=>{
+    // const [email, setEmail] = useState("");
+    // const [password, setPassword] = useState("");
     
-    axios.post('http://localhost:3001/login',JSON.stringify(user),{headers:{"Content-Type":"application/json"}})
-    .then((res)=>{
-        alert('Login Successfully');
-        console.log(res.data)})
-    .catch((err)=>{console.log(err)})
-    }
-    const signup=()=>{
-        Navigate('/signup');
-        
-    }
-  // 
-  // Navigate('/register');
+    const navigate = useNavigate();
+  
+    const handlelogin = () => {
+        const email="admin";
+        const password="admin";
 
+      if (email === "admin" && password === "admin") {
+        localStorage.setItem("email", email);
+        alert("Login successful");
+        navigate("/home"); // Navigate to Homepage
+      } else {
+        alert("Invalid credentials");
+      }
+    };
 return (
     <div
     style={{
@@ -66,20 +54,22 @@ return (
     
   
     <TextField
-        id="outlined-basic"
+        id="email"
+        className="email"
         label="Email"
         name="email"
         variant="outlined"
         fullWidth
-        onChange={(event) => handlechange(event)}
+        // onChange={handleChange()}
     />
     <TextField
-        id="outlined-basic"
+        id="password"
+        className="password"
         label="Password"
         name="password"
         variant="outlined"
         fullWidth
-        onChange={(event) => handlechange(event)}
+        // onChange={handleChange()}
     /><div>
  <Button variant="contained" onClick={handlelogin}>Sign In</Button>
     <a href="#" style={{ color: "black",marginLeft:"100px" }}>
@@ -89,7 +79,7 @@ return (
    
     <Typography variant="p">
         Don't have an account?
-        <a href="/signup" style={{ color: "black",margin:"5px" }} onClick={{signup}}>
+        <a href="/signup" style={{ color: "black",margin:"5px" }} >
         Signup
         </a>
     </Typography>
