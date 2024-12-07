@@ -6,23 +6,41 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Signin =()=> {
-    // const [email, setEmail] = useState("");
-    // const [password, setPassword] = useState("");
-    
-    const navigate = useNavigate();
-  
-    const handlelogin = () => {
-        const email="admin";
-        const password="admin";
+    const [credentials, setCredentials] = useState({
+        email: "",
+        password: "",
+        });
 
-      if (email === "admin" && password === "admin") {
-        localStorage.setItem("email", email);
-        alert("Login successful");
-        navigate("/home"); // Navigate to Homepage
-      } else {
-        alert("Invalid credentials");
-      }
-    };
+    const navigate = useNavigate();
+    const handleChange = (e) =>{
+        const { name, value } = e.target;
+        setCredentials((prevState) => ({
+        ...prevState,
+        [name]: value,
+    }));
+    }
+
+
+    const handleSignin = () => {
+        // Retrieve stored data from localStorage
+        const storedEmail = localStorage.getItem("userEmail");
+        const storedPassword = localStorage.getItem("userPassword");
+    
+        // Check credentials
+        if (
+            credentials.email === storedEmail &&
+            credentials.password === storedPassword
+        ) {
+            alert("Sign-in successful!");
+            navigate("/home");
+          // Redirect to dashboard or another page
+        } else {
+            alert("Invalid email or password!");
+        }
+        };
+
+
+
 return (
     <div
     style={{
@@ -52,7 +70,6 @@ return (
     >
     <Typography variant="h5"><span style={{color:"blue"}}>Welcome</span> ,Sign in</Typography>
     
-  
     <TextField
         id="email"
         className="email"
@@ -60,7 +77,7 @@ return (
         name="email"
         variant="outlined"
         fullWidth
-        // onChange={handleChange()}
+        onChange={handleChange}
     />
     <TextField
         id="password"
@@ -69,17 +86,18 @@ return (
         name="password"
         variant="outlined"
         fullWidth
-        // onChange={handleChange()}
-    /><div>
- <Button variant="contained" onClick={handlelogin}>Sign In</Button>
-    <a href="#" style={{ color: "black",marginLeft:"100px" }}>
+        type='password'
+        onChange={handleChange}
+    /><div style={{display:"flex",justifyContent:"space-between",width:"100%"}}>
+ <Button variant="contained" onClick={handleSignin}>Sign In</Button>
+    <a href="#" style={{ color: "black" }}>
         Forgot password
     </a>
     </div>
    
     <Typography variant="p">
         Don't have an account?
-        <a href="/signup" style={{ color: "black",margin:"5px" }} >
+        <a href="#x" style={{ color: "black",margin:"5px" }} >
         Signup
         </a>
     </Typography>
