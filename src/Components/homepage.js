@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import './homepage.css';
+import './Homepage.css';
 import { useNavigate } from "react-router-dom";
 
 function Homepage(){
