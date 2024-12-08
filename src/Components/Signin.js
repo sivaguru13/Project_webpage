@@ -33,6 +33,8 @@ const Signin =()=> {
         ) {
             alert("Sign-in successful!");
             navigate("/home");
+          
+            // localStorage.setItem(name)
           // Redirect to dashboard or another page
         } else {
             alert("Invalid email or password!");
