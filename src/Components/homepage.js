@@ -1,38 +1,54 @@
-import { Button } from "@mui/material";
-import './Homepage.css';
+// App.js
+import React, { useState } from "react";
+import "./Homepage.css";
 import { useNavigate } from "react-router-dom";
 
-function Homepage(){
-
-    //
-    window.addEventListener('load',function(){
-        let userName= localStorage.getItem('userName');
-        if(userName){
-            document.getElementById('msg').innerHTML="Welcome " + userName;
-        }
-    });
-    const navigate = useNavigate();
-
-        const logOut =()=>{
-        // localStorage.removeItem('userName');
-        navigate("/signin");
-        alert("Logout Succesfully");
+const Dashboard = () => {
+//   const [view, setView] = useState(""); // State to track current view (Seller/Buyer)
+    const navigate=useNavigate();
+    const sellerPage = () =>{
+        navigate('/seller')
+    }
+    const buyerPage = () =>{
+        navigate('/seller')
     }
 
-    return(
-        <div className="whole">
-        <div className="sidebar">
-            <img src="https://static.vecteezy.com/system/resources/previews/005/544/770/original/profile-icon-design-free-vector.jpg" alt=""/>
-            <h1 id="msg">Wecome</h1>
-            <div className="nav-left"><Button onclick="pageLoad('home')" className="butns">Home</Button><Button onclick="pageLoad('about')" className="butns">Buyer</Button><Button onclick="pageLoad('service')" className="butns">Seller</Button><Button onclick="pageLoad('payment')" class="butns">About</Button></div>
-        </div>
-        <Button onClick={logOut} id="but1">logout</Button>
-        <div id="rightside">
-            
-        </div>
+  return (
+    <div className="dashboard">
+      <h1>Welcome to the Dashboard</h1>
+      <div className="button-group">
+        <button onClick={sellerPage} className="btn">
+          Seller
+        </button>
+        <button onClick={buyerPage} className="btn">
+          Buyer
+        </button>
+      </div>
+      <div className="content">
+        {/* {view === "seller" && (
+          <div className="seller-options">
+            <h2>Seller Options</h2>
+            <ul>
+              <li>List a Product</li>
+              <li>Manage Listings</li>
+              <li>View Sales</li>
+            </ul>
+          </div>
+        )} */}
+        {/* {view === "buyer" && (
+          <div className="buyer-options">
+            <h2>Buyer Options</h2>
+            <ul>
+              <li>Browse Products</li>
+              <li>View Cart</li>
+              <li>Purchase History</li>
+            </ul>
+          </div>
+        )} */}
+        {/* {!view && <p>Please select an option to proceed.</p>} */}
+      </div>
     </div>
-    );
+  );
+};
 
-}
-
-export default Homepage;
+export default Dashboard;
