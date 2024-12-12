@@ -140,7 +140,7 @@ return (
     <div style={{display:"flex",justifyContent:"space-between",width:"100%"}}>
         
  <Button variant="contained" onClick={handleSignin}>Sign In</Button>
-    <a href="#">
+    <a href="/forgotPassword">
         Forgot password
     </a>
     </div>
