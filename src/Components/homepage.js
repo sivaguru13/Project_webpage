@@ -7,7 +7,7 @@ const Dashboard = () => {
 //   const [view, setView] = useState(""); // State to track current view (Seller/Buyer)
     const navigate=useNavigate();
     const sellerPage = () =>{
-        navigate('/seller')
+        navigate('/dashboard')
     }
     const buyerPage = () =>{
         navigate('/seller')

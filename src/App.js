@@ -5,6 +5,7 @@ import Login from './Components/Signin';
 import Signup from './Components/signup';
 import SellerDashboard from './Components/SellerDashboard';
 import FortgotPassword from './Components/forgotPassword';
+import Dashboard from './Components/Dashboard';
 
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
             <Route path='/signin' element={<Login/>}/>
             <Route path='/signup' element={<Signup/>}/>
             <Route path='/seller' element={<SellerDashboard/>}/> 
-            <Route path='/forgot-password' element={<FortgotPassword/>}/>           
+            <Route path='/forgot-password' element={<FortgotPassword/>}/>   
+            <Route path='/dashboard' element={<Dashboard/>}/>        
 
         </Routes>
         </BrowserRouter>
