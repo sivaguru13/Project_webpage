@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'CustomFont'; /* Choose a custom name for the font */
+  src: url('./Components/Fonts/Hello.ttf') format('truetype'); /* Path to your font file */
+  font-weight: normal;
+  font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+NL+Guides&display=swap');
+
+
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

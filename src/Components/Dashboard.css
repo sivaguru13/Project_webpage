@@ -10,8 +10,8 @@ body{
 .whole{
     display: flex;
 }
-.sidebar{
-    width: 20%;
+#sidebar{
+    width: 15%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -19,10 +19,11 @@ body{
     /* background-color: rgb(11, 11, 243, 1);  */
     align-items: center;
     color: rgb(0, 0, 0);
+    position: relative;
 
 }
 #rightside{
-    width: 80%;
+    width: 85%;
     height: 100vh;
     /* background-color: rgb(255, 255, 255); */
     /* display: flex;
@@ -39,7 +40,7 @@ body{
     /* justify-content: space-between; */
     height: 60%;
 }
-.sidebar a{
+#sidebar a{
     text-decoration: none;
     text-align: center;
    
@@ -51,6 +52,7 @@ body{
 
 }
 #msg{
+    font-family: 'CustomFont';
     font-size: 30px;
     color: rgb(17, 17, 17);
 }
@@ -94,9 +96,55 @@ img{
     padding-right: 100px; 
     border: none;
     background: none;
+    font-family: "Montserrat", serif;
 }
 .butns:hover{
     /* background: radial-gradient(circle at 0.1% 99.8%, rgb(16, 140, 159) 0%, rgb(0, 189, 165) 90%); */
     background-color: rgb(3, 53, 255);
     color: rgb(242, 243, 247);
+}
+.menu-icon{
+    position:"absolute";
+    left: 0px;
+}
+.wholecontent{
+    display: flex;
+    justify-content: space-around;
+}
+.dashboards{
+    height: 200px;
+    width: 200px;
+    background-color: white;
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.icondiv{
+  height: 4pc;
+  width: 4pc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 30px;
+  left: 15px;
+}
+.icn1{
+    color: rgb(134, 249, 5, 1);
+    background-color: rgb(59, 103, 9, 1);
+}
+.icn2{
+        color: rgb(99, 99, 243, 1);
+        background-color: rgb(6, 7, 96, 1);
+}
+.icn3{
+    color: rgb(8, 222, 241, 1);
+    background-color: rgb(19, 54, 57, 1);
+}
+.icn4{
+    color: rgb(245, 67, 80, 1);
+    background-color: rgb(119, 5, 14, 1);
 }
