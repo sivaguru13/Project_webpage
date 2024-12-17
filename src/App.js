@@ -7,6 +7,7 @@ import SellerDashboard from './Components/SellerDashboard';
 import FortgotPassword from './Components/forgotPassword';
 import Dashboard from './Components/Dashboard';
 import { BarChartComponent } from "./Components/chart";
+import {VisitorPieChart } from './Components/Piechart';
 
 
 function App() {
@@ -19,7 +20,9 @@ function App() {
             <Route path='/seller' element={<SellerDashboard/>}/> 
             <Route path='/forgot-password' element={<FortgotPassword/>}/>   
             <Route path='/dashboard' element={<Dashboard/>}/>  
-            <Route path='/chart' element={<BarChartComponent/>}/>      
+            <Route path='/chart' element={<BarChartComponent/>}/> 
+            <Route path='/pie' element={<VisitorPieChart/>}/>  
+          
 
         </Routes>
         </BrowserRouter>

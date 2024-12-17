@@ -1,10 +1,10 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import "./Dashboard.css";
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
-import { Button } from "@mui/material";
+import { Button, Divider, rgbToHex } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import Person2Icon from '@mui/icons-material/Person2';
@@ -15,8 +15,17 @@ import ChecklistIcon from '@mui/icons-material/Checklist';
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 
 // Recharts for Charts
-import { BarChart, Bar, CartesianGrid, XAxis, Tooltip, ResponsiveContainer } from "recharts";
-import { TrendingUp } from "lucide-react";
+import { BarChart, Bar, CartesianGrid, XAxis, Tooltip, ResponsiveContainer,PieChart, Pie,Label, LabelList  } from "recharts";
+import { Box, TrendingUp } from "lucide-react";
+
+
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  Typography,
+} from "@mui/material";
+import { ArrowUpward } from "@mui/icons-material";
 
 function Dashboard() {
     const [step, setStep] = useState(1); // Controls which page/section to display
@@ -82,6 +91,23 @@ function Dashboard() {
     { month: "June", desktop: 214 },
   ];
 
+  const chartVistorData = [
+    { browser: "chrome", visitors: 275, fill: "#4285F4" }, // Chrome Color
+    { browser: "safari", visitors: 200, fill: "#FFCD00" }, // Safari Color
+    { browser: "firefox", visitors: 287, fill: "#FF7139" }, // Firefox Color
+    { browser: "edge", visitors: 173, fill: "#0078D7" }, // Edge Color
+    { browser: "other", visitors: 190, fill: "#9E9E9E" }, // Other Color
+  ];
+
+
+    //dummy visitors
+    const totalVisitors = useMemo(
+        () => chartVistorData.reduce((acc, curr) => acc + curr.visitors, 0),
+        []
+      );
+    
+
+
     return (
     <div className="whole">
       {/* Sidebar */}
@@ -137,6 +163,7 @@ function Dashboard() {
               <div  className="dashboards content4">
               <h3 style={{color:"rgb(119, 5, 14, 1)"}}><div className="icondiv icn4"><CurrencyRupeeIcon style={{fontSize:"2pc"}}/></div> Revenue</h3></div>
             </div >
+            <div style={{display:"flex",marginTop:"30px"}}>
             <div className="chart-card">
               <h2>Bar Chart</h2>
               <ResponsiveContainer width="100%" height={300}>
@@ -149,7 +176,38 @@ function Dashboard() {
               </ResponsiveContainer>
               <div className="chart-footer">
                 Trending up by 5.2% this month <TrendingUp style={{ color: "green" }} />
+                <p> Showing total visitors for the last 6 months</p>
               </div>
+              </div>
+
+
+
+
+
+            
+              <Card sx={{ maxWidth: 400,margin: "20px auto",padding: "10px", backgroundColor: "none" }}>
+              <CardHeader
+              title={<Typography variant="h6" align="center">Pie Chart - Donut</Typography>}
+              subheader={<Typography variant="body2" align="center">Jan - June</Typography>}
+              />
+              <Divider />
+              <CardContent>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+              <PieChart width={250} height={250}>
+            <Pie
+            data={chartVistorData}
+            dataKey="visitors"
+            nameKey="browser"
+            innerRadius={60}
+            outerRadius={100}
+            strokeWidth={5}
+            label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+            />
+            <Tooltip />
+            </PieChart>
+            </div>
+          </CardContent>
+        </Card>
             </div>
             </div>}
         {step === 2 && 
