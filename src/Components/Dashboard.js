@@ -91,6 +91,8 @@ function Dashboard() {
     { month: "June", desktop: 214 },
   ];
 
+    // Define different colors for each bar
+    const barColors = ["#8884d8", "#82ca9d", "#ffc658", "#ff8042", "#8dd1e1", "#a4de6c"];
   const chartVistorData = [
     { browser: "chrome", visitors: 275, fill: "#4285F4" }, // Chrome Color
     { browser: "safari", visitors: 200, fill: "#FFCD00" }, // Safari Color
@@ -163,20 +165,38 @@ function Dashboard() {
               <div  className="dashboards content4">
               <h3 style={{color:"rgb(119, 5, 14, 1)"}}><div className="icondiv icn4"><CurrencyRupeeIcon style={{fontSize:"2pc"}}/></div> Revenue</h3></div>
             </div >
-            <div style={{display:"flex",marginTop:"30px"}}>
+            <div style={{display:"flex",marginTop:"10px"}}>
             <div className="chart-card">
-              <h2>Bar Chart</h2>
-              <ResponsiveContainer width="100%" height={300}>
+              <h2>Monthly Product Sale</h2>
+              <ResponsiveContainer width="100%" height={280}>
                 <BarChart data={chartData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="month" tickFormatter={(value) => value.slice(0, 3)} />
                   <Tooltip />
-                  <Bar dataKey="desktop" fill="#82ca9d" />
+                   {/* Apply dynamic colors to each bar */}
+          <Bar
+            dataKey="desktop"
+            fill="#8884d8"
+            barSize={50}
+            // Set custom colors
+            shape={(props) => {
+              const { x, y, width, height, index } = props;
+              return (
+                <rect
+                  x={x}
+                  y={y}
+                  width={width}
+                  height={height}
+                  fill={barColors[index % barColors.length]}
+                />
+              );
+            }}
+          />
                 </BarChart>
               </ResponsiveContainer>
               <div className="chart-footer">
                 Trending up by 5.2% this month <TrendingUp style={{ color: "green" }} />
-                <p> Showing total visitors for the last 6 months</p>
+                <p> Showing total Revenue for the last 6 months</p>
               </div>
               </div>
 
@@ -185,28 +205,51 @@ function Dashboard() {
 
 
             
-              <Card sx={{ maxWidth: 400,margin: "20px auto",padding: "10px", backgroundColor: "none" }}>
+              <Card sx={{ maxWidth: 400,margin: "20px auto",padding: "10px", backgroundColor: 'rgb(217, 222, 222, 1)',boxShadow:"none"}}>
               <CardHeader
-              title={<Typography variant="h6" align="center">Pie Chart - Donut</Typography>}
+              title={<Typography variant="h6" align="center"></Typography>}
               subheader={<Typography variant="body2" align="center">Jan - June</Typography>}
               />
               <Divider />
               <CardContent>
               <div style={{ display: "flex", justifyContent: "center" }}>
-              <PieChart width={250} height={250}>
+              <PieChart width={300} height={250}>
             <Pie
             data={chartVistorData}
             dataKey="visitors"
             nameKey="browser"
             innerRadius={60}
             outerRadius={100}
-            strokeWidth={5}
+            strokeWidth={0}
             label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
             />
+            <svg >
+            <text
+            x="50%"
+            y="50%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            style={{ fontSize: "18px", fontWeight: "bold", fill: "#333" }}
+            >
+            <tspan
+            style={{
+            fill: totalVisitors > 300 ? "green" : "red",
+            fontSize: "24px",
+            fontWeight: "bold",
+            }}
+            >
+            {totalVisitors}
+    </tspan>
+  </text>
+</svg>
+
+          
             <Tooltip />
             </PieChart>
             </div>
+            
           </CardContent>
+          
         </Card>
             </div>
             </div>}
