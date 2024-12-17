@@ -63,9 +63,6 @@ body{
     font-size: 30px;
     color: rgb(17, 17, 17);
 }
-.nav-left{
-  
-}
 
 #logout-btn{
     /* color: rgb(0, 0, 0); */
@@ -91,7 +88,7 @@ img{
     text-align: center;
     background-color: rgb(3, 53, 255);
     color: rgb(1, 1, 1); 
-    font-size: 2px;
+    font-size: 18px;
     /* background-image: radial-gradient(circle at 0.1% 99.8%, rgb(0, 164, 189) 0%, rgb(0, 189, 165) 90%);; */
     /* border-top: 1px solid;
     border-bottom:1px solid ; */
@@ -159,3 +156,53 @@ img{
     left: 0.1pc;
     display: none;
 }
+
+
+/* chart css */
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  .card-header {
+    background-color: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1rem;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #374151;
+    margin: 0;
+  }
+  
+  .card-description {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0.25rem 0 0;
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+  
+  .card-footer {
+    background-color: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    padding: 1rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .trending {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: #10b981;
+  }

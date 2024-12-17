@@ -14,6 +14,10 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ChecklistIcon from '@mui/icons-material/Checklist';
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 
+// Recharts for Charts
+import { BarChart, Bar, CartesianGrid, XAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { TrendingUp } from "lucide-react";
+
 function Dashboard() {
     const [step, setStep] = useState(1); // Controls which page/section to display
     const [name, setName] = useState("");
@@ -67,6 +71,16 @@ function Dashboard() {
     localStorage.removeItem("userName");
     navigate('/signin');
     };
+
+      // Dummy data for the chart
+  const chartData = [
+    { month: "January", desktop: 186 },
+    { month: "February", desktop: 305 },
+    { month: "March", desktop: 237 },
+    { month: "April", desktop: 73 },
+    { month: "May", desktop: 209 },
+    { month: "June", desktop: 214 },
+  ];
 
     return (
     <div className="whole">
@@ -122,8 +136,22 @@ function Dashboard() {
               <h3 style={{color:"rgb(6, 7, 96, 1)"}}><div className="icondiv icn3">< Person2Icon  style={{fontSize:"2pc"}}/></div> Customer</h3></div>
               <div  className="dashboards content4">
               <h3 style={{color:"rgb(119, 5, 14, 1)"}}><div className="icondiv icn4"><CurrencyRupeeIcon style={{fontSize:"2pc"}}/></div> Revenue</h3></div>
+            </div >
+            <div className="chart-card">
+              <h2>Bar Chart</h2>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={chartData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="month" tickFormatter={(value) => value.slice(0, 3)} />
+                  <Tooltip />
+                  <Bar dataKey="desktop" fill="#82ca9d" />
+                </BarChart>
+              </ResponsiveContainer>
+              <div className="chart-footer">
+                Trending up by 5.2% this month <TrendingUp style={{ color: "green" }} />
+              </div>
             </div>
-        </div>}
+            </div>}
         {step === 2 && 
             <div>
             <div className="seller-dashboard">
