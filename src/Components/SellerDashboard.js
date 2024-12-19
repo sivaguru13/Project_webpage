@@ -1,84 +1,113 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SellerDashboard.css";
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from "react-router-dom";
+import MenuIcon from '@mui/icons-material/Menu';
+import { Button, Divider, rgbToHex } from "@mui/material";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import Person2Icon from '@mui/icons-material/Person2';
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import HomeIcon from '@mui/icons-material/Home';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ChecklistIcon from '@mui/icons-material/Checklist';
+import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 
 
 const SellerDashboard = () => {
-  const [activeSection, setActiveSection] = useState("addProduct"); // Default section
-  const [products, setProducts] = useState([]); // State for managing product list
+  const [steps, setSteps]=useState(1); // Controls which page/section to display
+    // const navigate=useNavigate();
 
 
-  const handleAddProduct = (event) => {
-    event.preventDefault();
-    const newProduct = {
-      id: products.length + 1,
-      name: event.target.name.value,
-      price: event.target.price.value,
-      category: event.target.category.value,
-    };
-    setProducts([...products, newProduct]);
-    event.target.reset(); // Reset form fields
-    alert("Product added successfully!");
-  };
+    
+    useEffect(() => {
+    // Runs when the component mounts
+    const name = localStorage.getItem('userName');
+    if (name) {
+        // setName(name);
+    }
+    }, []);
 
+  //menubar
+  const menuClick = () =>{
+    // navigate('/signin')
+    if(document.getElementById('sidebar').style.display==="flex"){
+      document.getElementById('sidebar').style.display="none"
+      document.getElementById('rightside').style.width="100%"
+      document.getElementById('menuicons').style.display="flex"
+    }
+    else{
+      document.getElementById('sidebar').style.display="flex"
+      document.getElementById('menuicons').style.display="none"
+    }
+  }
+
+  const logOut = () => {
+  localStorage.removeItem("userName");
+  // navigate('/signin');
+  }
 
   return (
-    <div className="seller-dashboard">
-      <h1>Seller Dashboard</h1>
-      <div style={{display:"flex",width:"100%"}}>
-      <div className="navigation">
-        <button onClick={() => setActiveSection("addProduct")}>Add Product</button>
-        <button onClick={() => setActiveSection("manageListings")}>Manage Listings</button>
-        <button onClick={() => setActiveSection("salesReports")}>Sales Reports</button>
+    <div className="whole">
+      {/* Sidebar */}
+      <Button onClick={menuClick} style={{height:"30px",padding:"0px"}}><MenuIcon className="menu-icon" style={{position:"absolute",left:"10",top:"10"}} /></Button>
+      <div id="menuicons">
+      <Button onClick={() => setSteps(1)} sx={{color:"red"}}><HomeIcon/></Button>
+      <Button onClick={() => setSteps(2)} sx={{color:"red"}}><AddShoppingCartIcon/></Button>
+      <Button onClick={() => setSteps(3)} sx={{color:"red"}}><ChecklistIcon/></Button>
+      <Button onClick={() => setSteps(4)} sx={{color:"red"}}><CollectionsBookmarkIcon/></Button>
       </div>
-      <div style={{width:"75%"}}>
-      <div className="content">
-        {activeSection === "addProduct" && (
-          <div className="add-product">
-            <h2>Add Product</h2>
-            <form onSubmit={handleAddProduct}>
-              <label>
-                Product Name:
-                <input type="text" name="name" required />
-              </label>
-              <label>
-                Price:
-                <input type="number" name="price" required />
-              </label>
-              <label>
-                Category:
-                <input type="text" name="category" required />
-              </label>
-              <button type="submit">Add Product</button>
-            </form>
-          </div>
-        )}
-        {activeSection === "manageListings" && (
-          <div className="manage-listings">
-            <h2>Manage Listings</h2>
-            {products.length > 0 ? (
-              <ul>
-                {products.map((product) => (
-                  <li key={product.id}>
-                    {product.name} - ${product.price} - {product.category}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No products listed yet.</p>
-            )}
-          </div>
-        )}
-        {activeSection === "salesReports" && (
-          <div className="sales-reports">
-            <h2>Sales Reports</h2>
-            <p>Sales reports feature coming soon!</p>
-          </div>
-        )}
-      </div>
-      </div>
-    </div>
-  </div>
-    );   
-};
+        <div id="sidebar" >
+        
+        <img
+            src="https://static.vecteezy.com/system/resources/previews/005/544/770/original/profile-icon-design-free-vector.jpg"
+            alt="Profile"
+        />
+        <h1 id="msg"></h1>
+       
+        <div className="nav-left">
+          {/* Buttons to change step */}
+            <button onClick={() => setSteps(1)} className="butns">
+            Home
+            </button>
+            <button onClick={() => setSteps(2)} className="butns">
+            Add Product
+            </button>
+            <button onClick={() => setSteps(3)} className="butns">
+            Listings
+            </button>
+            <button onClick={() => setSteps(4)} className="butns">
+            SalesReports
+            </button>
+            
+        </div>
+        </div>
+
+      {/* Logout Button */}
+        <button onClick={logOut} id="logout-btn">
+        <LogoutIcon style={{color:"black"}}/>Logout
+        </button>
+
+         {/* Right Side Content */}
+      <div id="rightside">
+
+        {steps === 1 &&
+        <div>
+          Welcome
+        </div>
+        }
+      {steps === 2 && 
+            <div>
+            
+            </div>
+            }
+            
+            
+        </div>
+        </div>
+          );
+}
+
+  
 
 export default SellerDashboard;
