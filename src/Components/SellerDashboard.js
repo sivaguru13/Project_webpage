@@ -14,6 +14,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+// icons
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ShareIcon from '@mui/icons-material/Share';
 
 const SellerDashboard = () => {
   const [steps, setSteps] = useState(1); // Controls which section to display
@@ -67,7 +70,7 @@ const SellerDashboard = () => {
       padding: theme.spacing(1, 1, 1, 0),
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create('width'),
-      width: '100%',
+      width: '90%',
       [theme.breakpoints.up('sm')]: {
         width: '12ch',
         '&:focus': {
@@ -88,7 +91,7 @@ const SellerDashboard = () => {
   return (
     <div >
       {/* navabar */}
-        <nav style={{width:"100vw",display:"flex",alignItems:"center",height:"12vh"}}>
+        <nav style={{width:"100%",display:"flex",alignItems:"center",height:"12vh"}}>
         <div>
           <h1 id="msg">Welcome, {username || "User"}!</h1>
         </div>
@@ -104,28 +107,62 @@ const SellerDashboard = () => {
         <div className="full-width-carousel">
                <Slider {...carouselSettings}>
                  <div className="full-width-slide">
-                   <img
-                    src="https://media.geeksforgeeks.org/wp-content/uploads/20240307153443/GeeksforGeeks-Offline-Classes.webp"
+                   {/* <img
+                    src="https://th.bing.com/th/id/OIP.DIWO9z7rNdoiffsdr_4_NgHaE8?rs=1&pid=ImgDetMain"
                     alt="Slide 1"
                     className="slide-image"
-                  />
+                  /> */}
+                  <img src="https://th.bing.com/th/id/OIP.c1jLDAkmXBXcy995ezAg0gHaE8?w=800&h=534&rs=1&pid=ImgDetMain" style={{ width:"100%",height:"100%",borderRadius:"0%"}}/>
                 </div>
                 <div className="full-width-slide">
                   <img
-                    src="https://media.geeksforgeeks.org/wp-content/uploads/20240307153531/GeeksforGeeks-Classroom-Program---DSA-For-Interview-Preparation-Course.webp"
+                    src="https://th.bing.com/th/id/OIP.DIWO9z7rNdoiffsdr_4_NgHaE8?rs=1&pid=ImgDetMain"
                     alt="Slide 2"
                     className="slide-image"
                   />
                 </div>
                 <div className="full-width-slide">
                    <img
-                     src="https://media.geeksforgeeks.org/wp-content/uploads/20240307153605/School-programming.png"
+                     src="https://th.bing.com/th/id/OIP.DIWO9z7rNdoiffsdr_4_NgHaE8?rs=1&pid=ImgDetMain"
                      alt="Slide 3"
                      className="slide-image"
                    />
                  </div>
               </Slider>
              </div>
+
+            
+            {/* product list */}
+              <div>
+              <div className="parent-column">
+                <div className="child-column">
+                <div style={{display:"flex",justifyContent:"space-between",padding:"10px",width:"100%"}}><FavoriteBorderIcon/><ShareIcon/></div>
+                {/* image */}
+                <img src="https://th.bing.com/th/id/OIP.DIWO9z7rNdoiffsdr_4_NgHaE8?rs=1&pid=ImgDetMain" style={{height:"10vh"}}/>
+                <p>Product Name</p>
+                <p>$499</p>
+                <Button variant="contained">Add To Cart</Button>
+                <Button variant="contained">Buy</Button>
+
+                </div>
+                <div className="child-column"> </div>
+                <div className="child-column"> </div>
+                <div className="child-column"> </div>
+                <div className="child-column"> </div>
+                <div className="child-column"> </div>
+                <div className="child-column"> </div>
+                <div className="child-column"> </div>
+                <div className="child-column"> </div>
+                <div className="child-column"> </div>
+                <div className="child-column"> </div>
+                <div className="child-column"> </div>
+                <div className="child-column"> </div>
+                <div className="child-column"> </div>
+                <div className="child-column"> </div>
+                <div className="child-column"> </div>
+                </div>
+              </div>
+            
            </div>
   );
 }
