@@ -3,111 +3,130 @@ import "./SellerDashboard.css";
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
-import { Button, Divider, rgbToHex } from "@mui/material";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
-import Person2Icon from '@mui/icons-material/Person2';
-import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import { AppBar, Box, Button, IconButton, InputBase, Toolbar, Typography } from "@mui/material";
+import { styled, alpha } from '@mui/material/styles';
 import HomeIcon from '@mui/icons-material/Home';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ChecklistIcon from '@mui/icons-material/Checklist';
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
+import SearchIcon from '@mui/icons-material/Search';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 const SellerDashboard = () => {
-  const [steps, setSteps]=useState(1); // Controls which page/section to display
-    // const navigate=useNavigate();
+  const [steps, setSteps] = useState(1); // Controls which section to display
+  const [sidebarVisible, setSidebarVisible] = useState(true);
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
 
-
-    
-    useEffect(() => {
-    // Runs when the component mounts
+  useEffect(() => {
     const name = localStorage.getItem('userName');
-    if (name) {
-        // setName(name);
-    }
-    }, []);
+    if (name) setUsername(name);
+  }, []);
 
-  //menubar
-  const menuClick = () =>{
-    // navigate('/signin')
-    if(document.getElementById('sidebar').style.display==="flex"){
-      document.getElementById('sidebar').style.display="none"
-      document.getElementById('rightside').style.width="100%"
-      document.getElementById('menuicons').style.display="flex"
-    }
-    else{
-      document.getElementById('sidebar').style.display="flex"
-      document.getElementById('menuicons').style.display="none"
-    }
-  }
+  const handleMenuClick = () => {
+    setSidebarVisible(!sidebarVisible);
+  };
 
-  const logOut = () => {
-  localStorage.removeItem("userName");
-  // navigate('/signin');
-  }
+  const handleLogout = () => {
+    localStorage.removeItem("userName");
+    navigate('/signin');
+  };
+
+  // Styled Components
+  const SearchBar = styled('div')(({ theme }) => ({
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(1),
+      width: 'auto',
+    },
+  }));
+
+  const SearchIconWrapper = styled('div')(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }));
+
+  const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: 'inherit',
+    '& .MuiInputBase-input': {
+      padding: theme.spacing(1, 1, 1, 0),
+      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      transition: theme.transitions.create('width'),
+      width: '100%',
+      [theme.breakpoints.up('sm')]: {
+        width: '12ch',
+        '&:focus': {
+          width: '20ch',
+        },
+      },
+    },
+  }));
+
+  const carouselSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   return (
-    <div className="whole">
-      {/* Sidebar */}
-      <Button onClick={menuClick} style={{height:"30px",padding:"0px"}}><MenuIcon className="menu-icon" style={{position:"absolute",left:"10",top:"10"}} /></Button>
-      <div id="menuicons">
-      <Button onClick={() => setSteps(1)} sx={{color:"red"}}><HomeIcon/></Button>
-      <Button onClick={() => setSteps(2)} sx={{color:"red"}}><AddShoppingCartIcon/></Button>
-      <Button onClick={() => setSteps(3)} sx={{color:"red"}}><ChecklistIcon/></Button>
-      <Button onClick={() => setSteps(4)} sx={{color:"red"}}><CollectionsBookmarkIcon/></Button>
-      </div>
-        <div id="sidebar" >
-        
-        <img
-            src="https://static.vecteezy.com/system/resources/previews/005/544/770/original/profile-icon-design-free-vector.jpg"
-            alt="Profile"
-        />
-        <h1 id="msg"></h1>
-       
-        <div className="nav-left">
-          {/* Buttons to change step */}
-            <button onClick={() => setSteps(1)} className="butns">
-            Home
-            </button>
-            <button onClick={() => setSteps(2)} className="butns">
-            Add Product
-            </button>
-            <button onClick={() => setSteps(3)} className="butns">
-            Listings
-            </button>
-            <button onClick={() => setSteps(4)} className="butns">
-            SalesReports
-            </button>
-            
-        </div>
-        </div>
-
-      {/* Logout Button */}
-        <button onClick={logOut} id="logout-btn">
-        <LogoutIcon style={{color:"black"}}/>Logout
-        </button>
-
-         {/* Right Side Content */}
-      <div id="rightside">
-
-        {steps === 1 &&
+    <div >
+      {/* navabar */}
+        <nav style={{width:"100vw",display:"flex",alignItems:"center",height:"12vh"}}>
         <div>
-          Welcome
+          <h1 id="msg">Welcome, {username || "User"}!</h1>
         </div>
-        }
-      {steps === 2 && 
-            <div>
-            
-            </div>
-            }
-            
-            
+        <div style={{width:"40%",display:"flex",justifyContent:"space-evenly"}}>
+        <button onClick={() => setSteps(1)} className="butns">Home</button>
+            <button onClick={() => setSteps(2)} className="butns">Add Product</button>
+            <button onClick={() => setSteps(3)} className="butns">Listings</button>
+            <button onClick={() => setSteps(4)} className="butns">Sales Reports</button>
         </div>
-        </div>
-          );
+        </nav>
+
+        {/* carousel */}
+        <div className="full-width-carousel">
+               <Slider {...carouselSettings}>
+                 <div className="full-width-slide">
+                   <img
+                    src="https://media.geeksforgeeks.org/wp-content/uploads/20240307153443/GeeksforGeeks-Offline-Classes.webp"
+                    alt="Slide 1"
+                    className="slide-image"
+                  />
+                </div>
+                <div className="full-width-slide">
+                  <img
+                    src="https://media.geeksforgeeks.org/wp-content/uploads/20240307153531/GeeksforGeeks-Classroom-Program---DSA-For-Interview-Preparation-Course.webp"
+                    alt="Slide 2"
+                    className="slide-image"
+                  />
+                </div>
+                <div className="full-width-slide">
+                   <img
+                     src="https://media.geeksforgeeks.org/wp-content/uploads/20240307153605/School-programming.png"
+                     alt="Slide 3"
+                     className="slide-image"
+                   />
+                 </div>
+              </Slider>
+             </div>
+           </div>
+  );
 }
-
-  
-
 export default SellerDashboard;
