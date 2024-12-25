@@ -61,14 +61,14 @@ const BuyerWebpage = () => {
     
   }));
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows:false,//arrows remove
     autoplay:true,//automatically slide
-    autoplaySpeed:3000,//seconds to slide
+    autoplaySpeed:1000,//seconds to slide
     cssEase: "ease-in-out",  // Smooth easing effect for transitions
   };
   function Arrow(props) {
@@ -84,7 +84,7 @@ const BuyerWebpage = () => {
   return (
     <><Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{
-        background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+        background: 'linear-gradient(45deg,rgb(40, 161, 6) 30%,rgb(7, 112, 42) 90%)',
       }}>
         <Toolbar
           sx={{
@@ -114,16 +114,17 @@ const BuyerWebpage = () => {
     <div style={{width:"100%"}}>
     <Slider {...settings}>
         <div className="carouselimage">
-          <h3>1</h3>
+          <img src="https://th.bing.com/th/id/OIP.jJI3bTJ-diLfKDHb9-vwmwHaE8?rs=1&pid=ImgDetMain" className="imgcarousel"/>
+          
         </div>
         <div className="carouselimage">
-          <h3>2</h3>
+          <img/>
         </div>
         <div className="carouselimage">
-          <h3>3</h3>
+          <img/>
         </div>
         <div className="carouselimage">
-          <h3>4</h3>
+          <img/>
         </div>
         <div className="carouselimage">
           <h3>5</h3>
@@ -132,7 +133,13 @@ const BuyerWebpage = () => {
           <h3>6</h3>
         </div>
       </Slider></div>
+      
+      {/* Category */}
+      <div style={{height:"10vh",backgroundColor:"blue"}}>
+            welcomes you
+      </div>
       </>
+
   );
 };
 
