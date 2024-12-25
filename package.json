@@ -47,8 +47,7 @@
   },
   "devDependencies": {
     "postcss": "^8.4.49",
-    "resolve-url-loader": "^5.0.0",
-       "react-slick": "^<version>", 
-    "slick-carousel": "^<version>"
+    "react-slick": "^0.29.0",
+    "resolve-url-loader": "^5.0.0"
   }
 }
