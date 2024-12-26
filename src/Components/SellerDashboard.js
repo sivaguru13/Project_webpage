@@ -13,6 +13,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductCard from "./ProductCard";
+import { Pagination, Stack } from "@mui/material";
+import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import { Instagram, LinkedIn } from "@mui/icons-material";
+import { InstagramIcon, XIcon } from "lucide-react";
 
 
 
@@ -156,12 +160,30 @@ const BuyerWebpage = () => {
       </div>
       
       {/* Category */}
-      <div style={{backgroundColor:'lightgreen',textAlign:'center', width:'100%',fontWeight:'20px',padding:'10px'}}>Product List</div>
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+      <div style={{backgroundColor:'lightgreen',textAlign:'center', width:'100%',fontWeight:'20px',padding:'10px',}}>Product List</div>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
+    <div style={{width:'100%',justifyContent:'center'}}>
+    <Stack spacing={2}>
+      <Pagination count={10} color="primary" />
+    </Stack>
+    </div>
+    <footer class="footer-col" style={{display:'flex',justifyContent:'space-around', marginTop:'10px',backgroundColor:'lightgray', alignItems:'center'}}>
+      <div style={{}}>
+      <Typography variant="p">© 2025 Your Fresh Connect. All rights reserved.</Typography>
+      </div>
+  	 			<div class="social-links">
+           <Typography variant="h5">follow us</Typography>
+  	 				<a href="#"><FacebookRoundedIcon/></a>
+  	 				<a href="#"><LinkedIn/></a>
+  	 				<a href="#"><Instagram/></a>
+  	 				<a href="#"><XIcon/></a>
+  	 			</div>
+  	 		</footer>
+    
       </>
 
   );
