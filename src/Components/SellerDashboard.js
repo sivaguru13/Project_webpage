@@ -12,6 +12,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ProductCard from "./ProductCard";
 
 
 
@@ -81,6 +82,25 @@ const BuyerWebpage = () => {
       />
     );
   }
+
+  const products = [
+    {
+      id: 1,
+      name: "Product 1",
+      description: "This is an amazing product.",
+      price: 99.99,
+      image: "https://via.placeholder.com/300", // Replace with actual image URL
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      description: "Another fantastic item.",
+      price: 49.99,
+      image: "https://via.placeholder.com/300",
+    },
+  ];
+
+  
   return (
     <><Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{
@@ -132,12 +152,16 @@ const BuyerWebpage = () => {
         <div className="carouselimage">
           <h3>6</h3>
         </div>
-      </Slider></div>
+      </Slider>
+      </div>
       
       {/* Category */}
-      <div style={{height:"10vh",backgroundColor:"blue"}}>
-            welcomes you
-      </div>
+      <div style={{backgroundColor:'lightgreen',textAlign:'center', width:'100%',fontWeight:'20px',padding:'10px'}}>Product List</div>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
       </>
 
   );
