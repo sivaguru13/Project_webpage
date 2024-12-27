@@ -24,6 +24,7 @@ function App() {
             <Route path='/chart' element={<BarChartComponent/>}/> 
             <Route path='/pie' element={<VisitorPieChart/>}/>  
             <Route path='/productcard' element={<ProductCard/>}/>
+            <Route path='/' element={<Login/>}/>
           
 
         </Routes>
