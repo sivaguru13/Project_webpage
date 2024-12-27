@@ -45,8 +45,12 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "postcss": "^8.4.49",
     "react-slick": "^0.29.0",
     "resolve-url-loader": "^5.0.0"
+  },
+  "files.exclude": {
+    "img": true
   }
 }

@@ -13,6 +13,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductCard from "./ProductCard";
+
+import { Image } from "@mui/icons-material";
+import { Button } from "@mui/material";
+import PersonPinIcon from '@mui/icons-material/PersonPin';
+import { useNavigate } from "react-router-dom";
+
 import { Pagination, Stack } from "@mui/material";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import { Instagram, LinkedIn } from "@mui/icons-material";
@@ -87,7 +93,26 @@ const BuyerWebpage = () => {
     );
   }
 
-  const products = [
+
+  //hover function
+  const IconHover =() =>{
+    if(document.getElementById('navhover').style.display==="block"){
+      document.getElementById('navhover').style.display="flex"
+    }
+    else{
+      document.getElementById('navhover').style.display="block";
+    }
+
+    document.getElementById('icon').addEventListener('click', IconHover);
+  }
+
+
+  //signin and signup navigate
+  const navigate=useNavigate();
+  const handleClick = (path) =>{
+    navigate(path)
+  }
+  const products = [ 
     {
       id: 1,
       name: "Product 1",
@@ -98,6 +123,48 @@ const BuyerWebpage = () => {
     {
       id: 2,
       name: "Product 2",
+      description: "Another fantastic item.",
+      price: 49.99,
+      image: "https://via.placeholder.com/300",
+    },
+    {
+      id: 2,
+      name: "Product 3",
+      description: "Another fantastic item.",
+      price: 49.99,
+      image: "https://via.placeholder.com/300",
+    },
+    {
+      id: 2,
+      name: "Product 4",
+      description: "Another fantastic item.",
+      price: 49.99,
+      image: "https://via.placeholder.com/300",
+    },
+    {
+      id: 2,
+      name: "Product 5",
+      description: "Another fantastic item.",
+      price: 49.99,
+      image: "https://via.placeholder.com/300",
+    },
+    {
+      id: 2,
+      name: "Product 6",
+      description: "Another fantastic item.",
+      price: 49.99,
+      image: "https://via.placeholder.com/300",
+    },
+    {
+      id: 2,
+      name: "Product 7",
+      description: "Another fantastic item.",
+      price: 49.99,
+      image: "https://via.placeholder.com/300",
+    },
+    {
+      id: 2,
+      name: "Product 8",
       description: "Another fantastic item.",
       price: 49.99,
       image: "https://via.placeholder.com/300",
@@ -122,9 +189,20 @@ const BuyerWebpage = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
+            <div style={{display:"flex",justifyContent:"space-between",position:"relative"}}>
             FreshConnect
+
+            <div style={{display:"flex",alignItems:"center",width:"20%",justifyContent:"space-between"}}><Button onClick={IconHover} id="icon" sx={{color:"white"}}><PersonPinIcon /></Button><Button variant="contained" sx={{backgroundColor:"white",color:"black"}} onClick={() =>handleClick ('/dashboard') }>Became a Seller</Button></div></div>
+            <div id="navhover">
+              <div><Button onClick={() =>handleClick ('/signin')} sx={{color:"white"}}>Signin</Button></div>
+              <div><Button onClick={() =>handleClick ('/signup')} sx={{color:"white"}}>Signup</Button></div>
+            </div>
+            
+              
+            
           </Typography>
           <Search>
+            
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -135,28 +213,32 @@ const BuyerWebpage = () => {
         </Toolbar>
       </AppBar>
     </Box>
+    <div style={{height:"60vh",width:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
     <div style={{width:"100%"}}>
     <Slider {...settings}>
         <div className="carouselimage">
-          <img src="https://th.bing.com/th/id/OIP.jJI3bTJ-diLfKDHb9-vwmwHaE8?rs=1&pid=ImgDetMain" className="imgcarousel"/>
+          <img src="\Images\dream_TradingCard (4).jpg" className="imgcarousel"/>
           
         </div>
         <div className="carouselimage">
-          <img/>
+          <img src="\Images\dream_TradingCard (3).jpg" className="imgcarousel"/>
         </div>
         <div className="carouselimage">
-          <img/>
+          <img src="https://plus.unsplash.com/premium_vector-1713201017274-e9e97d783e75?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="imgcarousel" />
         </div>
         <div className="carouselimage">
-          <img/>
+          <img src="C:\Users\Siva\Downloads\Dream_Background.jpg"/>
         </div>
         <div className="carouselimage">
-          <h3>5</h3>
+         
+          <img src="\Images\artbreeder-image-2024-12-24T06_19_29.616Z.jpeg" className="imgcarousel"/>
         </div>
         <div className="carouselimage">
-          <h3>6</h3>
+       
+          <img src="\Images\DALL·E 2024-12-25 20.38.07 - A vibrant and colorful illustration featuring a variety of organic foods like fruits, vegetables, grains, and legumes, with a clear message written in.webp" className="imgcarousel"/>
         </div>
       </Slider>
+      </div>
       </div>
       
       {/* Category */}
@@ -166,6 +248,12 @@ const BuyerWebpage = () => {
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
+
+
+    <div style={{width:"100%",height:"50vh",backgroundColor:"lightgreen",display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column"}}>
+
+    </div>
+
     <div style={{width:'100%',justifyContent:'center'}}>
     <Stack spacing={2}>
       <Pagination count={10} color="primary" />
@@ -183,7 +271,6 @@ const BuyerWebpage = () => {
   	 				<a href="#"><XIcon/></a>
   	 			</div>
   	 		</footer>
-    
       </>
 
   );
