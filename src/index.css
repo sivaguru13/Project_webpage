@@ -27,13 +27,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-<<<<<<< Updated upstream
 
 *{
   box-sizing: border-box;
 }
-=======
+
 #root{
   height: 100vh;
 }
->>>>>>> Stashed changes
+
