@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 // App.js
 import React, { useState } from "react";
 import "./Homepage.css";
@@ -53,5 +53,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-=======
->>>>>>> Stashed changes
