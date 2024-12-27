@@ -28,3 +28,13 @@ justify-content: space-between;
   background-color: aqua;
   margin: 5px;
 }
+#navhover{
+  height:10vh;
+  width:5%;
+ background: linear-gradient(45deg,rgb(40, 161, 6) 30%,rgb(7, 112, 42) 90%);
+   position: absolute;
+  top: 8.5vh;
+  right: 25vw;
+  display: none;
+
+}

@@ -15,6 +15,8 @@ import "slick-carousel/slick/slick-theme.css";
 import ProductCard from "./ProductCard";
 import { Image } from "@mui/icons-material";
 import { Button } from "@mui/material";
+import PersonPinIcon from '@mui/icons-material/PersonPin';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -85,7 +87,26 @@ const BuyerWebpage = () => {
     );
   }
 
-  const products = [
+
+  //hover function
+  const IconHover =() =>{
+    if(document.getElementById('navhover').style.display==="block"){
+      document.getElementById('navhover').style.display="flex"
+    }
+    else{
+      document.getElementById('navhover').style.display="block";
+    }
+
+    document.getElementById('icon').addEventListener('click', IconHover);
+  }
+
+
+  //signin and signup navigate
+  const navigate=useNavigate();
+  const handleClick = (path) =>{
+    navigate(path)
+  }
+  const products = [ 
     {
       id: 1,
       name: "Product 1",
@@ -162,9 +183,16 @@ const BuyerWebpage = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            <div style={{display:"flex",justifyContent:"space-between"}}>
+            <div style={{display:"flex",justifyContent:"space-between",position:"relative"}}>
             FreshConnect
-            <Button variant="contained" sx={{backgroundColor:"white",color:"black"}}>Became a Seller</Button></div>
+
+            <div style={{display:"flex",alignItems:"center",width:"20%",justifyContent:"space-between"}}><Button onClick={IconHover} id="icon" sx={{color:"white"}}><PersonPinIcon /></Button><Button variant="contained" sx={{backgroundColor:"white",color:"black"}} onClick={() =>handleClick ('/dashboard') }>Became a Seller</Button></div></div>
+            <div id="navhover">
+              <div><Button onClick={() =>handleClick ('/signin')} sx={{color:"white"}}>Signin</Button></div>
+              <div><Button onClick={() =>handleClick ('/signup')} sx={{color:"white"}}>Signup</Button></div>
+            </div>
+            
+              
             
           </Typography>
           <Search>
