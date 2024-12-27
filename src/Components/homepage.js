@@ -1,7 +1,7 @@
 
 // App.js
 import React, { useState } from "react";
-import "./homepage.css";
+import "./Homepage.css";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
