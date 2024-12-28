@@ -10,6 +10,7 @@ body{
 }
 
 .imgcarousel{
+  justify-content: center;
   width: 50%;
   height:50vh;
   border-radius: 0%;
@@ -36,4 +37,9 @@ justify-content: space-between;
   top: 8.5vh;
   right: 25vw;
   display: none;
+}
+.carouselimage{
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }

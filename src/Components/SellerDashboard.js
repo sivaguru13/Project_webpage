@@ -189,10 +189,14 @@ const BuyerWebpage = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            <div style={{display:"flex",justifyContent:"space-between",position:"relative"}}>
+            <div style={{display:"flex",justifyContent:"space-between",flexWrap:'wrap'}}>
             FreshConnect
 
-            <div style={{display:"flex",alignItems:"center",width:"20%",justifyContent:"space-between"}}><Button onClick={IconHover} id="icon" sx={{color:"white"}}><PersonPinIcon /></Button><Button variant="contained" sx={{backgroundColor:"white",color:"black"}} onClick={() =>handleClick ('/dashboard') }>Became a Seller</Button></div></div>
+            <div style={{display:"flex",alignItems:"center",width:"20%",justifyContent:"space-between"}}>
+              <Button onClick={IconHover} id="icon" sx={{color:"white"}}><PersonPinIcon />
+              </Button><Button variant="contained" sx={{backgroundColor:"white",color:"black",flexWrap:'wrap'}} onClick={() =>handleClick ('/dashboard') }>Became a Seller</Button>
+              </div>
+              </div>
             <div id="navhover">
               <div><Button onClick={() =>handleClick ('/signin')} sx={{color:"white"}}>Signin</Button></div>
               <div><Button onClick={() =>handleClick ('/signup')} sx={{color:"white"}}>Signup</Button></div>

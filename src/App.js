@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import homepage from './Components/homepage';
+import Homepage from './Components/Homepage';
 import Login from './Components/Signin';  
 import Signup from './Components/signup';
 import SellerDashboard from './Components/SellerDashboard';
@@ -15,10 +15,10 @@ function App() {
     return(
         <BrowserRouter>
         <Routes>
-            <Route path='/home' element={<homepage/>}/>
+            <Route path='/home' element={<Homepage/>}/>
             <Route path='/signin' element={<Login/>}/>
             <Route path='/signup' element={<Signup/>}/>
-            <Route path="" element={<SellerDashboard/>}/> 
+            <Route path="/seller" element={<SellerDashboard/>}/> 
             <Route path='/forgot-password' element={<FortgotPassword/>}/>   
             <Route path='/dashboard' element={<Dashboard/>}/>  
             <Route path='/chart' element={<BarChartComponent/>}/> 
