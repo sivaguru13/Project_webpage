@@ -105,7 +105,7 @@ import { useNavigate } from 'react-router-dom';
             fullWidth/>
       </div>
       <Button variant="contained"  onClick={handleSignup} sx={{width:'100%'}}>Sign up</Button>
-      <Typography >Already have an account?  <Link href='/signin'>Log in</Link></Typography>
+      <Typography >Already have an account?  <Link href='/signin'>Sign in</Link></Typography>
       <Typography>or</Typography>
       
       <Button variant="contained" sx={{width:'100%',display:'flex',gap:'10px'}}><GoogleIcon/>Sign up with Google</Button>
