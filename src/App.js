@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Homepage from './Components/Homepage';
+import Homepage from './Components/homepage';
 import Login from './Components/Signin';  
-import Register from './Components/Signup';
+import Signup from './Components/Signup';
 import SellerDashboard from './Components/SellerDashboard';
 import FortgotPassword from './Components/forgotPassword';
 import Dashboard from './Components/Dashboard';
@@ -17,7 +17,7 @@ function App() {
         <Routes>
             <Route path='/home' element={<Homepage/>}/>
             <Route path='/signin' element={<Login/>}/>
-            <Route path='/signup' element={<Register/>}/>
+            <Route path='/signup' element={<Signup/>}/>
             <Route path="/seller" element={<SellerDashboard/>}/> 
             <Route path='/forgot-password' element={<FortgotPassword/>}/>   
             <Route path='/dashboard' element={<Dashboard/>}/>  

@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-    const Register=()=>{
+    const Signup=()=>{
     const navigate=useNavigate();
     const[user,setUser]=useState({"userName":"","userEmail":"", "userPassword":"","confirmPassword":""});
     const [errors, setErrors] = useState({});
@@ -114,4 +114,4 @@ import { useNavigate } from 'react-router-dom';
   </div>
     );
 }
-export default Register;
+export default Signup;

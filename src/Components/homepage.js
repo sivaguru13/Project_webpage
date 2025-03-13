@@ -1,6 +1,6 @@
 
 // App.js
-import "./Homepage.css";
+import "./homepage.css";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
