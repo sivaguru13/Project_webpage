@@ -32,6 +32,7 @@ function Dashboard() {
     const [name, setName] = useState("");
     const [activeSection, setActiveSection] = useState("addProduct"); // Default section
     const [products, setProducts] = useState([]); // State for managing product list
+    const [showConfirmation, setShowConfirmation] = useState(false);
     const navigate=useNavigate();
 
 
@@ -61,6 +62,24 @@ function Dashboard() {
         
     }
     }, []);
+    
+       // this for conformation message 
+    const logOut = () => {
+      setShowConfirmation(true); // Open confirmation dialog
+  };
+
+  const handleConfirm = () => {
+      setShowConfirmation(false); // Close dialog
+      localStorage.removeItem("userName");
+      navigate('/signin'); // Navigate to sign-in
+  };
+
+  const handleCancel = () => {
+      setShowConfirmation(false); // Close dialog
+  };
+
+ 
+
 
     //menubar
     const menuClick = () =>{
@@ -76,10 +95,6 @@ function Dashboard() {
       }
     }
 
-    const logOut = () => {
-    localStorage.removeItem("userName");
-    navigate('/signin');
-    };
 
       // Dummy data for the chart
   const chartData = [
@@ -150,6 +165,14 @@ function Dashboard() {
         <button onClick={logOut} id="logout-btn">
         <LogoutIcon style={{color:"black"}}/>Logout
         </button>
+        {/* confomation alert message for logout */}
+        {showConfirmation && (
+        <div className="confirmation-dialog">
+          <p>Are you sure you want to logout?</p>
+          <button onClick={handleConfirm}>Yes</button>
+          <button onClick={handleCancel}>No</button>
+        </div>
+      )}
 
       {/* Right Side Content */}
         <div id="rightside">
